@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Chuchu Chen - Technical Reports</title>
+   <meta name="author" content="Patrick Geneva">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+   <link rel="icon" href="../favicon.ico">
+   <script type="text/javascript">
+      function start(id) {
+         var element1 = document.getElementById(id+"_1");
+         var element2 = document.getElementById(id+"_2");
+         if(element1 && element2) {
+            element1.style.opacity = "0";
+            element2.style.opacity = "1";
+         }
+      }
+      function stop(id) {
+         var element1 = document.getElementById(id+"_1");
+         var element2 = document.getElementById(id+"_2");
+         if(element1 && element2) {
+            element1.style.opacity = "1";
+            element2.style.opacity = "0";
+         }
+      }
+   </script>
+   <script type="text/javascript">
+      if (window.location.protocol != "https:" && window.location.protocol != "file:") {
+         window.location.protocol = "https:";
+      }
+   </script>
+</head>
+<body>
+
+
+<!-- ====================================== -->
+<!-- ====================================== -->
+<!-- ====================================== -->
+<table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+   <tbody>
+   <tr style="padding:0px">
+      <td style="padding:0px">
+         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+            <tr style="padding:0px">
+               <td style="padding:2.5%;width:63%;vertical-align:middle">
+                  <p style="text-align:center">
+                     <name>Technical Reports</name>
+                  </p>
+                  <p>
+                     This page contains the technical reports which detailed the derivations for the corresponding paper.
+                  </p>
+               </td>
+            </tr>
+            </tbody>
+         </table>
+         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+
+
+
+            <!-- ====================================== -->
+            <!-- ====================================== -->
+            <!-- ====================================== -->
+            <tr>
+               <td style="padding:20px;width:100%;vertical-align:middle">
+                  <h2>Visual-Inertial-Aided Online MAV System Identification</h2>
+                  <p>
+                     System modeling and parameter identification of micro aerial vehicles (MAV) are crucial for robust autonomy, especially under highly dynamic motions. Visual-inertial-aided online parameter identification has recently seen research attention due to the demanding of adaptation to platform configuration changes with minimal onboard sensor requirements.
+                     To this end, we design an online MAV system identification algorithm to tightly fuse visual, inertial and MAV aerodynamic information within a lightweight multi-state constraint Kalman filter (MSCKF) framework.
+                     In particular, while one could blindly fuse the MAV dynamic-induced relative motion constraints in EKF, we numerically show that due to the (quadrotor) MAV system modeling inaccuracy, they often become overconfident and negatively impact the state estimates. As such, we leverage the Schmidt-Kalman filter (SKF) for MAV system parameter identification to prevent corruption of state estimates.
+                     Through extensive simulations and real-world experiments, we validate the proposed SKF-based scheme and demonstrate its ability to perform robust system identification even in the presence of an inconsistent MAV dynamic model under different motions.
+                  <ul>
+                  <li><a href="../downloads/papers/Chen2022IROS.pdf" target="_blank"> Paper</a></li>
+                  <li><a href="../downloads/reports/tr_mav.pdf" target="_blank">Tech-Report</a></li>
+                  </ul>
+                  </p>
+               </td>
+            </tr>
+
+
+
+            <!-- ====================================== -->
+            <!-- ====================================== -->
+            <!-- ====================================== -->
+            <tr>
+               <td style="padding:20px;width:100%;vertical-align:middle">
+                  <h2>FEJ2: A Consistent Visual-Inertial State Estimator Design</h2>
+                  <p>
+                     In this paper, we propose a novel consistent state  estimator design for visual-inertial systems.
+                     Motivated by first estimates Jacobian (FEJ) based estimators – which uses the first-ever estimates as linearization points to preserve proper observability properties of the linearized estimator thereby improving the consistency – we carefully model measurement linearization errors due to its Jacobian evaluation and propose a methodology which still leverages FEJ to ensure the estimator’s observability properties, but additionally explicitly compensate for linearization errors caused by poor first estimates.
+                     We term this estimator FEJ2, which directly addresses the discrepancy between the best Jacobian evaluated at the latest state estimate and the first-estimates Jacobian evaluated at the first-time-ever state estimate. We show that this process explicitly models that the FEJ used is imperfect and thus contributes additional error which, as in FEJ2, should be modeled and consistently increase the state covariance during update.
+                     The proposed FEJ2 is evaluated against state-of-the-art visual-inertial estimators in both Monte-Carlo simulations and real-world experiments, which has been shown to outperform existing methods and to robustly handle poor first estimates and high measurement noises.
+                  <ul>
+                     <li><a href="../downloads/papers/Chen2022ICRA.pdf" target="_blank"> Paper</a></li>
+                     <li><a href="../downloads/reports/tr_fej2.pdf" target="_blank">Tech-Report</a></li>
+                  </ul>
+                  </p>
+               </td>
+            </tr>
+
+
+            <!-- ====================================== -->
+            <!-- ====================================== -->
+            <!-- ====================================== -->
+            <tr>
+               <td style="padding:20px;width:100%;vertical-align:middle">
+                  <h2>Decoupled Right Invariant Error States for Consistent Visual-Inertial Navigation</h2>
+                  <p>
+                     The invariant extended Kalman filter (IEKF) is
+                     proven to preserve the observability property of visual-inertial
+                     navigation systems (VINS) and suitable for consistent estimator
+                     design. However, if features are maintained in the state vector, the
+                     propagation of IEKF will become more computationally expensive
+                     because these features are involved in the covariance propagation.
+                     To address this issue, we propose two novel algorithms which
+                     preserve the system consistency by leveraging the invariant state
+                     representation and ensure efficiency by decoupling features from
+                     covariance propagation. The first algorithm combines right invariant error states with first-estimates Jacobian (FEJ) technique, by
+                     decoupling the features from the Lie group representation and
+                     utilizing FEJ for consistent estimation. The second algorithm is
+                     designed specifically for sliding-window filter-based VINS as it associates the features to an active cloned pose, instead of the current
+                     IMU state, for Lie group representation. A new pseudo-anchor
+                     change algorithm is also proposed to maintain the features in the
+                     state vector longer than the window span. Both decoupled rightand left-invariant error based VINS methods are implemented for a
+                     complete comparison. Extensive Monte-Carlo simulations on three
+                     simulated trajectories and real world evaluations on the TUM-VI
+                     datasets are provided to verify our analysis and demonstrate that
+                     the proposed algorithms can achieve improved accuracy than a
+                     state-of-art filter-based VINS algorithm using FEJ.
+                  <ul>
+                  <li><a href="../downloads/papers/Yang2022RAL.pdf" target="_blank"> Paper</a></li>
+                  <li><a href="../downloads/reports/tr_dri.pdf" target="_blank">Tech-Report</a></li>
+                  </ul>
+                  </p>
+               </td>
+            </tr>
+
+
+            <!-- ====================================== -->
+            <!-- ====================================== -->
+            <!-- ====================================== -->
+            <tr>
+               <td style="padding:20px;width:100%;vertical-align:middle">
+                  <h2>Analytic Combined IMU Integration (ACI^2) For Visual Inertial Navigation</h2>
+                  <p>
+                     Batch optimization based inertial measurement
+                     unit (IMU) and visual sensor fusion enables high rate localization for many robotic tasks. However, it remains a challenge to
+                     ensure that the batch optimization is computationally efficient
+                     while being consistent for high rate IMU measurements without
+                     marginalization. In this paper, we derive inspiration from
+                     maximum likelihood estimation with partial-fixed estimates
+                     to provide a unified approach for handing both IMU preintegration and time-offset calibration. We present a modularized analytic combined IMU integrator (ACI2
+                     ) with elegant
+                     derivations for IMU integrations, bias Jabcobians and related
+                     covariances. To simplify our derivation, we also prove that
+                     the right Jacobians for Hamilton quaterions and SO(3) are
+                     equivalent. Finally, we present a time offset calibrator that
+                     operates by fixing the linearization point for a given time
+                     offset. This reduces re-integration of the IMU measurements
+                     and thus improve efficiency. The proposed ACI2
+                     and time-offset
+                     calibration is verified by intensive Monte-Carlo simulations
+                     generated from real world datasets. A proof-of-concept real
+                     world experiment is also conducted to verify the proposed ACI2
+                     estimator.
+                  <ul>
+                  <li><a href="../downloads/papers/Yang2020ICRA.pdf.pdf" target="_blank"> Paper</a></li>
+                  <li><a href="../downloads/reports/tr_aci.pdf" target="_blank">Tech-Report</a></li>
+                  </ul>
+                  </p>
+               </td>
+            </tr>
+
+
+
+
+            </tbody>
+         </table>
+
+
+         <!-- ====================================== -->
+         <!-- ====================================== -->
+         <!-- ====================================== -->
+         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+            <tr>
+               <td style="padding:0px">
+                  <br>
+                  <p style="text-align:center;font-size:small;">
+                     <a href="../index.html">Go Home</a>
+                  </p>
+               </td>
+            </tr>
+            </tbody>
+         </table>
+      </td>
+   </tr>
+</table>
+
+<script async src="//static.getclicky.com/101360336.js"></script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101360336ns.gif" /></p></noscript>
+
+
+</body>
+</html>
